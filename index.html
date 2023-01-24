@@ -8,13 +8,13 @@
 </head>
 <body>
     <header>
-        <button id="score-btn" class="btn">High Scores</button>
+        <button class="btn" id="highscore-btn" >High Scores</button>
         <h4 class="timer">Time Left: <span id="timer"></span> </h4>
     </header>
 
 <main> 
-    <section id="intro-container" class="show">
-        <div class="container start">
+    <section class="show" id="start-page">
+        <div class="start-content">
             <h1>Javascript Quiz</h1>  
             <h2>Prove your JavaScript knowledge</h2>
             <p class="intructions">How it works:</p>
@@ -23,12 +23,33 @@
                 <li>Lose 10 seconds for every incorrect answer</li>
                 <li>Each correct answer = 5 points</li>
                 <li>Answer questions faster for higher total score</li>
-                <li>Improve your game by comapring high scores at the end</li>
+                <li>Improve your game by comparing high scores at the end!</li>
             </ul>
-            <button class="btn startend" id="start-game">Start Quiz</button>
+            <button class="btn" id="startquiz-btn">Start</button>
         </div>    
     </section>
 
+
+    <section class="hide" id="question-page">
+        <div class="question-content">
+            <div id="question"></div>
+            <div class="answers-content" id="answers">
+                <div id="answer-a"></div>
+                <div id="answer-b"></div>
+                <div id="answer-c"></div>
+                <div id="answer-d"></div>
+            </div>
+            <div class="answer-verify">
+                <div class= "hide" id="answer-correct"> 
+                    <h4>Correct! +5pts</h4>
+                </div>
+                <div class= "hide" id="answer-incorrect"> 
+                    <h4>Incorrect! -10s</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 </main>   
 </body>
 </html>

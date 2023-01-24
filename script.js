@@ -1,3 +1,64 @@
+//variables for HTML sections and their elements 
+var questionPage = document.getElementById('question-page');
+var startPage = document.getElementById('start-page');
+var finishPage = document.getElementById('finish-page');
+var containerHighScores = document.getElementById('highscore-page');
+var scoreContent = document.getElementById('score-content');
+var formInitials = document.getElementById('initials-form');
+
+var highScoreList = document.getElementById('highscore-list');
+var answerCorrect = document.getElementById('answer-correct');
+var answerIncorrect = document.getElementById('answer-incorrect');
+
+var question = document.getElementById('question');
+var answerOptionA = document.getElementById("answer-a");
+var answerOptionB = document.getElementById("answer-b");
+var answerOptionC = document.getElementById("answer-c");
+var answerOptionD = document.getElementById("answer-d");
+
+var timer = document.querySelector('#timer');
+var score = 0;
+var timeleft;
+var gameover;
+timer.innerText = 0;
+
+//variables for buttons
+var btnStart = document.querySelector('#startquiz-btn');
+var btnViewHighScore = document.querySelector('#highscore-btn');
+var btnReturnHome = document.querySelector('#return-home-btn');
+var btnClearHighScores = document.querySelector('#clear-highscore-btn');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*Pseudo Code Module 4
 
 Create start button 

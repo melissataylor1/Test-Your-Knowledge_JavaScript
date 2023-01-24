@@ -7,20 +7,28 @@
     <title>JavaScript Quiz</title>
 </head>
 <body>
-    
-    <div id='q1-section'></div>
-    <div id="q1-text">
+    <header>
+        <button id="score-btn" class="btn">High Scores</button>
+        <h4 class="timer">Time Left: <span id="timer"></span> </h4>
+    </header>
 
-    </div>
-     <div id="q1a1-text">
+<main> 
+    <section id="intro-container" class="show">
+        <div class="container start">
+            <h1>Javascript Quiz</h1>  
+            <h2>Prove your JavaScript knowledge</h2>
+            <p class="intructions">How it works:</p>
+            <ul class="intructions"> 
+                <li>You have 50 seconds to complete 5 questions</li>
+                <li>Lose 10 seconds for every incorrect answer</li>
+                <li>Each correct answer = 5 points</li>
+                <li>Answer questions faster for higher total score</li>
+                <li>Improve your game by comapring high scores at the end</li>
+            </ul>
+            <button class="btn startend" id="start-game">Start Quiz</button>
+        </div>    
+    </section>
 
-     </div>
-      <div id="q1a2-text">
-
-    </div>
-    <div id="q1a3-text">
-
-    </div>
-</div > 
+</main>   
 </body>
 </html>

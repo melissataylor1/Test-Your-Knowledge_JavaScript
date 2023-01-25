@@ -2,9 +2,9 @@
 var questionPage = document.getElementById('question-page');
 var startPage = document.getElementById('start-page');
 var finishPage = document.getElementById('finish-page');
-var containerHighScores = document.getElementById('highscore-page');
+var highScorePage = document.getElementById('highscore-page');
 var scoreContent = document.getElementById('score-content');
-var formInitials = document.getElementById('initials-form');
+var initialsForm = document.getElementById('initials-form');
 
 var highScoreList = document.getElementById('highscore-list');
 var answerCorrect = document.getElementById('answer-correct');
@@ -16,38 +16,129 @@ var answerOptionB = document.getElementById("answer-b");
 var answerOptionC = document.getElementById("answer-c");
 var answerOptionD = document.getElementById("answer-d");
 
+//variables for timer
 var timer = document.querySelector('#timer');
-var score = 0;
-var timeleft;
-var gameover;
+var timeLeft;
+var gameOver;
 timer.innerText = 0;
 
-//variables for buttons
-var btnStart = document.querySelector('#startquiz-btn');
-var btnViewHighScore = document.querySelector('#highscore-btn');
-var btnReturnHome = document.querySelector('#return-home-btn');
-var btnClearHighScores = document.querySelector('#clear-highscore-btn');
+var score = 0;
+var currentQuestion = 0;
+
+//variables for HTML buttons
+var startBtn = document.querySelector('#startquiz-btn');
+var viewHighScoreBtn = document.querySelector('#highscore-btn');
+var returnHomeBtn = document.querySelector('#return-home-btn');
+var clearHighScoreBtn = document.querySelector('#clear-highscore-btn');
+
+//High Score Array
+var highScores = [];
+
+//Question order variables
+var randomizeQuestions;
+var questionIndex = 0;
+
+//Questions Array
+var questions = [
+    {
+        question: "<p>What does HTML stand for?</p>",
+        answerOptionA: "<button class='answer-button' id='A' onclick='checkAnswer(event)'>Hyper Text Markup Language</button>",
+        answerOptionB: "<button class='answer-button' id='B' onclick='checkAnswer(event)'>How To Make Lasagna</button>",
+        answerOptionC: "<button class='answer-button' id='C' onclick='checkAnswer(event)'>Hold This, My Love <3</button>",
+        answerOptionD: "<button class='answer-button' id='D' onclick='checkAnswer(event)'>Has The Microwave Leaked?</button>",
+        answer: "A"
+    },{
+        question: "<p>What does CSS Stand for</p>",
+        answerOptionA: "<button class='answer-button' id='A' onclick='checkAnswer(event)'>Cold Simmer Sauce</button>",
+        answerOptionB: "<button class='answer-button' id='B' onclick='checkAnswer(event)'>Cascading Style Sheets</button>",
+        answerOptionC: "<button class='answer-button' id='C' onclick='checkAnswer(event)'>Crocodiles, Snakes, & Sharks</button>",
+        answerOptionD: "<button class='answer-button' id='D' onclick='checkAnswer(event)'>Can Seashells Swim?</button>",
+        answer: "B"
+    },{
+        question: "<p>Javascript _________?</p>",
+        answerOptionA: "<button class='answer-button' id='A' onclick='checkAnswer(event)'>adds content on the webpage</button>",
+        answerOptionB: "<button class='answer-button' id='B' onclick='checkAnswer(event)'>adds styling to the webpage</button>",
+        answerOptionC: "<button class='answer-button' id='C' onclick='checkAnswer(event)'>adds interactivity to the webpage</button>",
+        answerOptionD: "<button class='answer-button' id='D' onclick='checkAnswer(event)'>adds secrets to the webpage</button>",
+        answer: "C"
+    },{
+        question: "<p>CSS files are linked in what part of the HTML file.</p>",
+        answerOptionA: "<button class='answer-button' id='A' onclick='checkAnswer(event)'>header</button>",
+        answerOptionB: "<button class='answer-button' id='B' onclick='checkAnswer(event)'>main</button>",
+        answerOptionC: "<button class='answer-button' id='C' onclick='checkAnswer(event)'>footer</button>",
+        answerOptionD: "<button class='answer-button' id='D' onclick='checkAnswer(event)'>head</button>",
+        answer: "D"
+    },{
+        question: "<p>JavaScript can be fun</p>",
+        answerOptionA: "<button class='answer-button' id='A' onclick='checkAnswer(event)'>Yes</button>",
+        answerOptionB: "<button class='answer-button' id='B' onclick='checkAnswer(event)'>No</button>",
+        answerOptionC: "<button class='answer-button' id='C' onclick='checkAnswer(event)'>No!</button>",
+        answerOptionD: "<button class='answer-button' id='D' onclick='checkAnswer(event)'>NOOOOOOO!!!!!!</button>",
+        answer: "A"
+    }
+];
+
+highScoresLink.addEventListener("click", viewScores);
+
+startButton.addEventListener("click", startQuiz);
+
+submitScore.addEventListener("click", viewScores);
+
+returnToHomeButton.addEventListener("click", returnHome);
+
+resetButton.addEventListener("click", clearStorage);
 
 
 
 
+//Timer Countdown
+var countDown = function() {
+    timeLeft = 50; 
+  
+  var timeReset = setInterval(function() {
+    timer.innerText = timeLeft;
+    timeLeft--
+  
+    if (gameOver) {
+        clearInterval(timeReset)
+    }
+   
+    if (timeLeft < 0) {
+        showScore()
+        timer.innerText = 0
+        clearInterval(timeReset)
+    }
+  
+    }, 1000)
+  }
 
 
+//Start Quiz
+function startQuiz() {
+    startPage.style.display = "none";
+    questionPage.style.display = "block";
+    timer.style.display = "block";
+    answerCorrect.style.display = "none";
+    answerIncorrect.style.display = "none";
+    countDown();
+    displayQuestion();
+    
+ };
+ 
 
+ var displayQuestion = function() {
+    resetAnswers()
+    displayQuestion(shuffledQuestions[QuestionIndex])
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  function displayQuestion() {
+    var thisQuestion = questions[currentQuestion];
+    questionText.innerHTML = thisQuestion.questionText;
+    optionA.innerHTML = thisQuestion.optionA;
+    optionB.innerHTML = thisQuestion.optionB;
+    optionC.innerHTML = thisQuestion.optionC;
+    optionD.innerHTML = thisQuestion.optionD;
+};
 
 
 

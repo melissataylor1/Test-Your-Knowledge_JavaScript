@@ -9,7 +9,10 @@
 <body>
     <header>
         <button class="btn" id="highscore-btn" >High Scores</button>
+        
         <h4 class="timer">Time Left: <span id="timer"></span> </h4>
+       
+        </header>
     </header>
 
 <main> 
@@ -34,10 +37,12 @@
         <div class="question-content">
             <div id="question"></div>
             <div class="answers-content" id="answers">
+            <div id="answers-child">
                 <div id="answer-a"></div>
                 <div id="answer-b"></div>
                 <div id="answer-c"></div>
                 <div id="answer-d"></div>
+            </div>
             </div>
             <div class="answer-verify">
                 <div class= "hide" id="answer-correct"> 
@@ -56,8 +61,8 @@
             <div id="score-content"></div> 
             <form class="savescore" id="initals-form" >
                 <h4> Enter Initials:
-                    <input id="initials">
-                  <button class="btn" id="sumbit-score" type="submit">Submit</button> 
+                    <input type="text" id="initials"/>
+                  <button class="btn" id="sumbit-score-btn" type="submit">Submit</button> 
                 </h4>
             </form>
          </div>
@@ -68,8 +73,8 @@
           <h1 class="highscore">High Scores</h1>
           <ol class="highscore-list" id="highscore-list" ></ol>
             <div>
-                <button class="btn" id="return-home">Home</button>
-                <button class="btn" id="clear-highscore">Clear Highscores</button>
+                <button class="btn" id="return-home-btn">Home</button>
+                <button class="btn" id="clear-highscore-btn">Clear Highscores</button>
             </div>
         </div>
      </section>
@@ -78,5 +83,6 @@
      <footer>
         <p> Made with ❤️ by Mel Taylor</p>
      </footer>
+     <script src="./assets/script.js"></script>
 </body>
 </html>

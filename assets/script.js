@@ -10,7 +10,7 @@ const answerOptions = document.querySelectorAll('.answer-btn');
 const checkScore = document.querySelector('.check-score');
 const finishContent = document.querySelector('.finish-content');
 const finalScore = document.querySelector('.final-score');
-const finish = document.querySelector('.finish-text');
+const finishText = document.querySelector('.finish-text');
 const highScores = document.querySelector('.highscore-content');
 const scoreList = document.querySelector('.highscore-list');
 const submitBtn = document.querySelector('.submit-btn');
@@ -56,3 +56,30 @@ let questions = [
         a: '3'
     }
 ];
+
+let score = [];
+let questionNumber = 0;
+let questionCount = 1;
+let timeLeft = 50;
+
+//timer function
+function setTime() {
+  let timerInterval = setInterval(function () {
+    timeLeft--;
+    timer.textContent = timeLeft;
+   
+     //Stops quiz at 0 seconds
+    if (timeLeft == 0) {
+      clearInterval(timerInterval);
+      //If quiz finishes because time ran out, displays message instead of "END"
+      finishText.textContent = 'Out of time :(';
+      //Initates game over function
+      gameOver();
+
+      //If time !== 0 then quiz finishes when no more questions
+  } else if (questionCount >= questions.length + 1){
+      clearInterval(timerInterval);
+      gameOver();
+  }
+}, 1000);
+};

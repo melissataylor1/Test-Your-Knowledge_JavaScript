@@ -57,29 +57,43 @@ let questions = [
     }
 ];
 
-let score = [];
+
 let questionNumber = 0;
 let questionCount = 1;
+let score = [];
 let timeLeft = 50;
 
-//timer function
+//TIMER FUNCTION
 function setTime() {
   let timerInterval = setInterval(function () {
+    //makes timer count backwards
     timeLeft--;
+    //makes timer span in HTML print the time
     timer.textContent = timeLeft;
    
      //Stops quiz at 0 seconds
     if (timeLeft == 0) {
       clearInterval(timerInterval);
-      //If quiz finishes because time ran out, displays message instead of "END"
+      //If quiz finishes bc time ran out, displays message below instead of "END"
+      //And initates game over function
       finishText.textContent = 'Out of time :(';
-      //Initates game over function
       gameOver();
 
-      //If time !== 0 then quiz finishes when no more questions
+    //If time !== 0 then quiz finishes when no more questions
   } else if (questionCount >= questions.length + 1){
       clearInterval(timerInterval);
       gameOver();
   }
 }, 1000);
+};
+
+//QUIZ START
+function startQuiz() {
+  //hides home page content
+  startContent.style.display = 'none';
+  //shows first question and starts the time
+  quizContent.style.display = 'block';
+  questionNumber = 0;
+  setTime();
+  showQuestion(questionNumber);
 };

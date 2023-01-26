@@ -1,88 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Quiz</title>
+    <link rel="stylesheet" href="./assets/style.css">
 </head>
+
 <body>
     <header>
-        <button class="btn" id="highscore-btn" >High Scores</button>
-        
+
+        <button class="view-highscores">High Scores</button>
+
         <h4 class="timer">Time Left: <span id="timer"></span> </h4>
-       
-        </header>
+
     </header>
 
-<main> 
-    <section class="show" id="start-page">
-        <div class="start-content">
-            <h1>Javascript Quiz</h1>  
-            <h3>Prove your JavaScript knowledge</h3>
-            <p class="intructions">How it works:</p>
-            <ul class="intructions"> 
-                <li>You have 50 seconds to complete 5 questions</li>
-                <li>Lose 10 seconds for every incorrect answer</li>
-                <li>Each correct answer = 5 points</li>
-                <li>Answer questions faster for higher total score</li>
-                <li>Improve your game by comparing high scores at the end!</li>
-            </ul>
-            <button class="btn" id="startquiz-btn">Start</button>
-        </div>    
-    </section>
+
+    <main>
+        <section>
+            <div class="start-content">
+                <h1 class="title">Javascript Quiz</h1>
+                <h3>Prove your JavaScript knowledge</h3>
+                <ul class="intructions">
+                    <li>How it works:</li>
+                    <li>You have 50 seconds to complete 5 questions</li>
+                    <li>Lose 10 seconds for every incorrect answer</li>
+                    <li>Each correct answer = 5 points</li>
+                    <li>Answer questions faster for higher total score</li>
+                    <li>Improve your game by comparing high scores at the end!</li>
+                </ul>
+                <button class="start-btn">Start</button>
+            </div>
+        </section>
 
 
-    <section class="hide" id="question-page">
-        <div class="question-content">
-            <div id="question"></div>
-            <div class="answers-content" id="answers">
-            <div id="answers-child">
-                <div id="answer-a"></div>
-                <div id="answer-b"></div>
-                <div id="answer-c"></div>
-                <div id="answer-d"></div>
-            </div>
-            </div>
-            <div class="answer-verify">
-                <div class= "hide" id="answer-correct"> 
-                    <h4>Correct! +5pts</h4>
-                </div>
-                <div class= "hide" id="answer-incorrect"> 
-                    <h4>Incorrect! -10s</h4>
+        <section>
+            <div class="quiz-content">
+                <div class="questions"></div>
+                    <ul>
+                        <li><button class="answer-btn" id="option-a" value="1"></button></li>
+                        <li><button class="answer-btn" id="option-b" value="2"></button></li>
+                        <li><button class="answer-btn" id="option-c" value="3"></button></li>
+                        <li><button class="answer-btn" id="option-d" value="4"></button></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section class="finish-content">
+                <h2 class="finish-text"> End </h2>
+                <p class="final-score"></p>
+                <h4> Enter Intials: <input id="initials"><button class="submit-btn"> Save High Score</button></h4>
+        </section>
+
+        <div class="check-score"></div>
+
+        <section class="highscore-content">
+                <h1>High Scores</h1>
+                <ol class="highscore-list"></ol>
+                <div class="highscore-btns">
+                    <button class="return-home-btn">Home</button>
+                    <button class="clear-highscore-btn">Clear Highscores</button>
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p id="credit"> Made with ❤️ by Mel Taylor</p>
+    </footer>
     
-    <section class="hide" id="finish-page">
-        <div class="finish-content">
-            <h2 id="finish-text"></h2>
-            <div id="score-content"></div> 
-            <form class="savescore" id="initals-form" >
-                <h4> Enter Initials:
-                    <input type="text" id="initials"/>
-                  <button class="btn" id="sumbit-score-btn" type="submit">Submit</button> 
-                </h4>
-            </form>
-         </div>
-     </section>
-
-     <section class="hide" id="highscore-page" >
-        <div class="highscore-content">
-          <h1 class="highscore">High Scores</h1>
-          <ol class="highscore-list" id="highscore-list" ></ol>
-            <div>
-                <button class="btn" id="return-home-btn">Home</button>
-                <button class="btn" id="clear-highscore-btn">Clear Highscores</button>
-            </div>
-        </div>
-     </section>
- 
-</main>
-     <footer>
-        <p> Made with ❤️ by Mel Taylor</p>
-     </footer>
-     <script src="./assets/script.js"></script>
+    <script src="./assets/script.js"></script>
 </body>
+
 </html>

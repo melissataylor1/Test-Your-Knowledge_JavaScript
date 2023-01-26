@@ -97,3 +97,20 @@ function startQuiz() {
   setTime();
   showQuestion(questionNumber);
 };
+
+
+//QUESTION DISPLAY
+//Sets text content of questions & answers to corresponding array values
+function showQuestion(n) {
+//n = parameter for question within array of questions
+  askQuestion.textContent = quizQuestions[n].question;
+  answer1.textContent = quizQuestions[n].choices[0];
+  answer2.textContent = quizQuestions[n].choices[1];
+  answer3.textContent = quizQuestions[n].choices[2];
+  answer4.textContent = quizQuestions[n].choices[3];
+  //Stores index of current question in questionNumber variable
+  questionNumber = n;
+};
+
+//EVENTLISTENER FOR START BUTTON CLICK
+startBtn.addEventListener('click', startQuiz);

@@ -219,6 +219,11 @@
   .clear-highscore-btn {
     margin: 10px;
   }
+  .timer {
+    font-size: 70%;
+    margin: 5px;
+}
+
   }
 
 

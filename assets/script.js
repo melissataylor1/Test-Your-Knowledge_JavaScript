@@ -191,3 +191,89 @@ function init() {
     };
     return scores;
 };
+
+
+
+
+
+//Sort scores from highest to lowest
+function sort() {
+  let unsortedList = init();
+  //If scores from init function doesn't exist, exit function 
+  if (init == null) {
+      return;
+  } else {
+      //Sort scores from highest value to lowest
+      unsortedList.sort(function (a, b) {
+          return b.score - a.score;
+      })
+
+      return unsortedList;
+  };
+};
+
+//Store scores and initials to local storage 
+function storeScores() {
+  //Save initials and score values to highScore
+  let highScore = {
+      initials: initialsInput.value.trim(),
+      score: timeLeft
+  };
+
+  //If highScore doesn't exist, exit function
+  if (highScore === '') {
+      return;
+  };
+
+  //Push highScore values to scores array
+  scores.push(highScore);
+
+  //Stringify and set key in localStorage to scores array
+  localStorage.setItem('scores', JSON.stringify(scores));
+  renderScores();
+};
+
+//Add click event to submitBtn element
+submitBtn.addEventListener('click', function (event) {
+  event.preventDefault();
+  finishContent.style.display = 'none';
+  //Displays high scores
+  highScores.style.display = 'block';
+  //Calls storeScores to push data to localStorage
+  storeScores();
+});
+
+//Calls init to retrieve data and render it to the page on load
+init();
+
+//Add click event to viewHighscore element
+viewHighScore.addEventListener('click', function (event) {
+  event.preventDefault();
+  startContent.style.display = 'none';
+  quizContent.style.display = 'none';
+  finishContent.style.display = 'none';
+  checkAnswer.style.display = 'none';
+  //Displays high scores
+  highScores.style.display = 'block';
+  //Re-renders the high score list
+  renderScores();
+});
+
+//Add click event to backBtn element
+backBtn.addEventListener('click', function (event) {
+  event.preventDefault();
+  //Go back to main page
+  location.reload();
+});
+
+//Add click event to clearBtn element
+clearBtn.addEventListener('click', function (event) {
+  event.preventDefault();
+  //Clears data from localStorage
+  localStorage.clear();
+  //Re-renders the high score list
+  renderScores();
+});
+
+
+

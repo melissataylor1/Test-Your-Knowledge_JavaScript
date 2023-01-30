@@ -43,7 +43,9 @@
     
   }
 
-
+.timer {
+    margin:15px;
+}
 
   .start-btn {
     padding: 8px 15px;
@@ -65,8 +67,8 @@
     padding: 10px;
     margin-top: 50px;
     margin-bottom: 5px;
-    text-align: left;
-    font-size: 35px;
+    text-align: center;
+    font-size: 25px;
   }
   
   ul {
@@ -96,8 +98,9 @@
     margin: 10px;
     border-top: 2px solid lightgrey;
     text-align: center;
-    font-style: italic;
+    font-style:oblique;
     font-size: 20px;
+    font-weight: 600;
     color: rgb(5, 71, 91);
   }
   
@@ -109,7 +112,7 @@
     padding: 10px;
     margin-top: 50px;
     margin-bottom: 5px;
-    text-align: left;
+    text-align: center;
     font-size: 30px;
   }
   
@@ -137,6 +140,8 @@
   .highscore-list {
     margin-top: 10px;
     padding: 5px;
+    width: 40%;
+    text-align: center;
   }
   
   .highscore-btns {
@@ -146,7 +151,16 @@
   .return-home-btn,
   .clear-highscore-btn {
     padding: 3px 20px;
-    background-color: rgb(36, 28, 138);
+    background-color: rgb(52, 88, 160);
+    color: white;
+    border-radius: 8px;
+    font-size: 18px;
+  }
+
+  .view-highscores{
+    padding: 3px 20px;
+    margin: 10px;
+    background-color: rgb(52, 88, 160);
     color: white;
     border-radius: 8px;
     font-size: 18px;
@@ -155,13 +169,15 @@
   .view-highscores:hover {
     cursor: pointer;
   }
+
+ 
   
   .button:hover {
     background-color: rgb(36, 101, 231);
   }
   
   .view-highscores:hover:hover {
-    color: rgb(11, 135, 245);
+    color: rgb(101, 183, 255);
   }
   
   .quiz-content,
@@ -188,8 +204,21 @@
       margin-left: 12px;
       margin-right: 12px;
     }
+    .questions {
+        font-size: 18px;
+      }
+      footer {
+        margin: 20px;
+        font-size: 15px;
+      }
+      
+      .highscore-content {
+        font-size: 15px;
   }
-
-
+  
+  .clear-highscore-btn {
+    margin: 10px;
+  }
+  }
 
 

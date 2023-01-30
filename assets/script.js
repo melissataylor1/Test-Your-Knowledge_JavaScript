@@ -128,9 +128,9 @@ function checkAnswerChoice (event) {
 
   //Tests if correct answer condition is met 
   if (questions[questionNumber].a === event.target.value) {
-      checkAnswer.textContent = 'Correct 😃!';
+      checkAnswer.textContent = 'Correct';
   } else {
-      checkAnswer.textContent = 'Incorrect 😟!';
+      checkAnswer.textContent = 'Incorrect';
       //10 second penalty for wrong answers
       timeLeft = timeLeft - 10;
   };

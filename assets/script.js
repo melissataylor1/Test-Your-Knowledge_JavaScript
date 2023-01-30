@@ -7,7 +7,7 @@ const startBtn = document.querySelector('.start-btn');
 const quizContent = document.querySelector('.quiz-content');
 const questionText = document.querySelector('.questions');
 const answerOptions = document.querySelectorAll('.answer-btn');
-const checkScore = document.querySelector('.check-score');
+const checkAnswer = document.querySelector('.check-answer');
 const finishContent = document.querySelector('.finish-content');
 const finalScore = document.querySelector('.final-score');
 const finishText = document.querySelector('.finish-text');
@@ -16,6 +16,7 @@ const scoreList = document.querySelector('.highscore-list');
 const submitBtn = document.querySelector('.submit-btn');
 const backBtn = document.querySelector('.return-home-btn');
 const clearBtn = document.querySelector('.clear-highscore-btn');
+const initialsInput = document.querySelector('#initials');
 
 //Answer IDs
 const optionA = document.querySelector('#option-a');
@@ -103,14 +104,90 @@ function startQuiz() {
 //Sets text content of questions & answers to corresponding array values
 function showQuestion(n) {
 //n = parameter for question within array of questions
-  askQuestion.textContent = quizQuestions[n].question;
-  answer1.textContent = quizQuestions[n].choices[0];
-  answer2.textContent = quizQuestions[n].choices[1];
-  answer3.textContent = quizQuestions[n].choices[2];
-  answer4.textContent = quizQuestions[n].choices[3];
+  questionText.textContent = questions[n].q;
+  //assigns option with value in button element in question section
+  optionA.textContent = questions[n].options[0];
+  optionB.textContent = questions[n].options[1];
+  optionC.textContent = questions[n].options[2];
+  optionD.textContent = questions[n].options[3];
   //Stores index of current question in questionNumber variable
   questionNumber = n;
 };
 
 //EVENTLISTENER FOR START BUTTON CLICK
 startBtn.addEventListener('click', startQuiz);
+
+//CHECK ANSWER
+function checkAnswerChoice (event) {
+  event.preventDefault();
+//displays answer feedback for 1 second
+  checkAnswer.style.display = 'block';
+  setTimeout(function () {
+      checkAnswer.style.display = 'none';
+  }, 1000);
+
+  //Tests if correct answer condition is met 
+  if (questions[questionNumber].a === event.target.value) {
+      checkAnswer.textContent = 'Correct 😃!';
+  } else {
+      checkAnswer.textContent = 'Incorrect 😟!';
+      //10 second penalty for wrong answers
+      timeLeft = timeLeft - 10;
+  };
+
+  if (questionNumber < questions.length - 1) {
+      showQuestion(questionNumber + 1);
+  } else {
+      gameOver();
+  }
+
+  questionCount++;
+};
+//Displays the users score 
+function gameOver() {
+  quizContent.style.display = 'none';
+  finishContent.style.display = 'block';
+    timeLeft = timeLeft < 0 ? 0 : timeLeft;
+    finalScore.textContent = 'Your final score is ' + timeLeft + '.';
+}
+
+//Add click event for answerChoice element to call checkAnswerChoice function
+answerOptions.forEach(function (click) {
+    click.addEventListener('click', checkAnswerChoice);
+});
+
+
+//Renders initials and scores into a score list as <li> elemenets
+function renderScores() {
+    scoreList.innerHTML = '';
+    scoreList.style.display = 'block';
+
+    let highScores = sort();
+
+    //Render new li for each score
+    for (let i = 0; i < scores.length; i++) {
+        let highScore = highScores[i];
+
+        let li = document.createElement('li');
+        li.textContent = highScore.initials + ' - ' + highScore.score;
+        li.setAttribute('data-index', i);
+        li.style.backgroundColor = 'rgb(' + [210, 186, 236, 0.531].join(',') + ')';
+        scoreList.appendChild(li);
+    };
+
+    init();
+};
+
+function init() {
+    //Retrieve stored scores from local storage
+    let storedScores = JSON.parse(localStorage.getItem('scores'));
+
+    //If stored value exists, set scores to those values
+    if (storedScores !== null) {
+        scores = storedScores;
+    } else {
+        //If stored value doesn't exist, set scores to an empty array
+        scores = [];
+    };
+    return scores;
+};
